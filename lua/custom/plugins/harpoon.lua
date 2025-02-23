@@ -14,6 +14,35 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- Define events to load Harpoon.
 
+  config = function()
+    local harpoon = require 'harpoon'
+    local extensions = require 'harpoon.extensions'
+
+    harpoon:setup()
+    -- Navigate with numbers in the harpoon buffer list
+    harpoon:extend(extensions.builtins.navigate_with_number())
+
+    -- Highlight current file in the harpoon buffer list
+    harpoon:extend(extensions.builtins.highlight_current_file())
+
+    -- Add keymaps for harpoon window
+    harpoon:extend {
+      UI_CREATE = function(cx)
+        vim.keymap.set('n', '<C-v>', function()
+          harpoon.ui:select_menu_item { vsplit = true }
+        end, { buffer = cx.bufnr })
+
+        vim.keymap.set('n', '<C-x>', function()
+          harpoon.ui:select_menu_item { split = true }
+        end, { buffer = cx.bufnr })
+
+        vim.keymap.set('n', '<C-t>', function()
+          harpoon.ui:select_menu_item { tabedit = true }
+        end, { buffer = cx.bufnr })
+      end,
+    }
+  end,
+
   keys = function()
     -- basic telescope configuration
     local conf = require('telescope.config').values
@@ -110,7 +139,21 @@ return {
         function()
           toggle_telescope(require('harpoon'):list())
         end,
-        desc = 'Harpoon open window',
+        desc = 'Harpoon Telescope Menu',
+      },
+
+      -- Harpoon by mark index.
+      {
+        '<C-x>',
+        function()
+          vim.ui.input({ prompt = 'Harpoon mark index: ' }, function(input)
+            local num = tonumber(input)
+            if num then
+              require('harpoon'):list():select(num)
+            end
+          end)
+        end,
+        desc = 'Harpoon goto index of mark',
       },
     }
     return keys
