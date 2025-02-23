@@ -1,5 +1,4 @@
 return {
-  -- https://github.com/Traap/nvim/blob/master/lua/traap/plugins/harpoon.lua
   -- Define the Harpoon lazy.vim specificaiton.
 
   'ThePrimeagen/harpoon',
