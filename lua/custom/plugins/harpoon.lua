@@ -10,7 +10,7 @@ return {
     'nvim-telescope/telescope.nvim',
   },
 
-  -- ----------------------------------------------------------------------- }}}
+  -- ----------------------------------------------------------------------
   -- Define events to load Harpoon.
 
   config = function()
@@ -143,7 +143,7 @@ return {
 
       -- Harpoon by mark index.
       {
-        '<C-x>',
+        '<a-0>',
         function()
           vim.ui.input({ prompt = 'Harpoon mark index: ' }, function(input)
             local num = tonumber(input)
@@ -158,5 +158,5 @@ return {
     return keys
   end,
 
-  -- ----------------------------------------------------------------------- }}}
+  -- -----------------------------------------------------------------------
 }
