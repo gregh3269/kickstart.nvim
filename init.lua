@@ -1029,3 +1029,6 @@ require('lazy').setup({
 -- Custom setup
 -- Save undo history. No undo from previous edit, was true.
 vim.o.undofile = false
+
+-- Load
+require 'custom.config.autocmds'
