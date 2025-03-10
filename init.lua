@@ -1032,3 +1032,4 @@ vim.o.undofile = false
 
 -- Load
 require 'custom.config.autocmds'
+require 'custom.config.keymaps'

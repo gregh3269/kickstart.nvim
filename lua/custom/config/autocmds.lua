@@ -1,4 +1,4 @@
--- go to last location when opening a buffer
+-- Go to last location when opening a buffer
 vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -6,5 +6,13 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
+  end,
+})
+
+-- Close windows <C-q> quick fix by pressing q otherwise :cclose
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'qf' },
+  callback = function()
+    vim.keymap.set('n', 'q', '<cmd>bd<cr>', { silent = true, buffer = true })
   end,
 })
