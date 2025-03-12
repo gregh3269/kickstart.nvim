@@ -5,8 +5,7 @@ wk.add {
   { '<leader>pw', group = 'Search Cursor <cword>' },
   { '<leader>pW', group = 'Search Cursor <cWORD>' },
   { '<leader>pF', group = 'Fugitive' },
-  { '<leader>pFp', group = 'Git push' },
-  { '<leader>pFP', group = 'Git Pull' },
+  { '<leader>F', group = ':Git Commands' },
 }
 
 local builtin = require 'telescope.builtin'

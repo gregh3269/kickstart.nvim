@@ -7,7 +7,7 @@
 return {
   'tpope/vim-fugitive',
   config = function()
-    vim.keymap.set('n', '<leader>pf', vim.cmd.Git, { desc = 'Fugitive' })
+    vim.keymap.set('n', '<leader>pf', vim.cmd.Git, { desc = 'Fugitive (Git)' })
 
     local My_Fugitive = vim.api.nvim_create_augroup('My_Fugitive', {})
 
@@ -22,22 +22,15 @@ return {
 
         local bufnr = vim.api.nvim_get_current_buf()
         local opts = { buffer = bufnr, remap = false }
-        vim.keymap.set('n', '<leader>pFp', function()
-          vim.cmd.Git 'push'
-        end, opts)
 
-        -- rebase always
-        vim.keymap.set('n', '<leader>pFP', function()
-          vim.cmd.Git { 'pull', '--rebase' }
-        end, opts)
+        vim.keymap.set('n', '<leader>Fp', ':Git push<CR>', opts)
 
-        -- NOTE: It allows me to easily set the branch i am pushing and any tracking
-        -- needed if i did not set the branch up correctly
-        vim.keymap.set('n', '<leader>pFpo', ':Git push -u origin ', opts)
+        -- pull --rebase = fetch + rebase
+        vim.keymap.set('n', '<leader>FP', ':Git pull --rebase<CR>', opts)
+
+        -- NOTE: Sets upstream branch for check >> [-u | --set-upstream]
+        vim.keymap.set('n', '<leader>Fo', ':Git push -u origin ', opts)
       end,
     })
-
-    vim.keymap.set('n', 'pFu', '<cmd>diffget //2<CR>')
-    vim.keymap.set('n', 'pFh', '<cmd>diffget //3<CR>')
   end,
 }
