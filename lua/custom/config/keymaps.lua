@@ -2,8 +2,8 @@
 local wk = require 'which-key'
 wk.add {
   { '<leader>p', group = '[P]roject' },
-  { '<leader>pw', group = 'Search Cursor <cword>' },
-  { '<leader>pW', group = 'Search Cursor <cWORD>' },
+  --  { '<leader>pw', group = 'Search Cursor <cword>' },
+  --  { '<leader>pW', group = 'Search Cursor <cWORD>' },
   { '<leader>pF', group = 'Fugitive' },
   { '<leader>F', group = ':Git Commands' },
 }
@@ -20,19 +20,23 @@ end, { desc = 'Search Input' })
 
 -- Project Word Search from cursor > a sequence of letters, digits and underscores, or a
 -- sequence of other non-blank characters, separated with white space
-vim.keymap.set('n', '<leader>pws', function()
+vim.keymap.set('n', '<leader>pw', function()
   local word = vim.fn.expand '<cword>'
   builtin.grep_string { search = word }
-end, { desc = 'Project Word Search' })
+end, { desc = 'Search Cursor <cword>' })
 
 -- Project Word Search from cursor > sequence of non-blank characters, separated with white space.
-vim.keymap.set('n', '<leader>pWs', function()
+vim.keymap.set('n', '<leader>pW', function()
   local word = vim.fn.expand '<cWORD>'
   builtin.grep_string { search = word }
-end, { desc = 'Project WORD Search' })
+end, { desc = 'Search Cursor <cWORD>' })
 
 -- Scroll through quick list 'zz' to move the current line to the center of the screen
-vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz', { desc = 'Next in List' })
-vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Previous in List' })
+-- :copen to open the qlist
+vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz', { desc = 'Next in qfix list' })
+vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Previous in qfix list' })
+
+-- vim.keymap.set('n', '<C-h>', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
+-- vim.keymap.set('n', '<C-l>', '<cmd>lprev<CR>zz', { desc = 'Previous in location list' })
 
 -- vim.keymap.set('n', '<leader>pf', builtin.find_files , {  desc = 'find files' })

@@ -16,7 +16,7 @@ return {
 
     -- vim.keymap.set('n', '<leader>gf', ':lua vim.lsp.buf.format({ async = true })<CR>', { desc = 'Format the open buffer' })
     -- vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = 'Format buffer' })
-    vim.keymap.set('n', '<leader>wf', ':noautocmd w<CR>', { desc = 'Save Without Formatting' })
+    vim.keymap.set('n', '<leader>ps', ':noautocmd w<CR>', { desc = 'Save Without Formatting' })
 
     null_ls.setup {
       -- debug = true,
