@@ -39,4 +39,10 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Previous in qfix list
 -- vim.keymap.set('n', '<C-h>', '<cmd>lnext<CR>zz', { desc = 'Next in location list' })
 -- vim.keymap.set('n', '<C-l>', '<cmd>lprev<CR>zz', { desc = 'Previous in location list' })
 
+-- Resize with arrows
+-- vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Resize Horizontal Split Down' })
+-- vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Resize Horizontal Split Up' })
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Resize Vertical Split Down' })
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Resize Vertical Split Up' })
+
 -- vim.keymap.set('n', '<leader>pf', builtin.find_files , {  desc = 'find files' })
