@@ -1030,11 +1030,3 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
--- Custom setup
--- Save undo history. No undo from previous edit, was true.
-vim.o.undofile = false
-
--- Load
-require 'custom.config.autocmds'
-require 'custom.config.keymaps'
