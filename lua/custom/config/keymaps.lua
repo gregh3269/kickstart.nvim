@@ -20,10 +20,10 @@ end, { desc = 'Search Input' })
 
 -- Project Word Search from cursor > a sequence of letters, digits and underscores, or a
 -- sequence of other non-blank characters, separated with white space
-vim.keymap.set('n', '<leader>pw', function()
-  local word = vim.fn.expand '<cword>'
-  builtin.grep_string { search = word }
-end, { desc = 'Search Cursor <cword>' })
+-- vim.keymap.set('n', '<leader>pw', function()
+--   local word = vim.fn.expand '<cword>'
+--   builtin.grep_string { search = word }
+-- end, { desc = 'Search Cursor <cword>' })
 
 -- Project Word Search from cursor > sequence of non-blank characters, separated with white space.
 vim.keymap.set('n', '<leader>pW', function()
@@ -40,8 +40,8 @@ vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Previous in qfix list
 -- vim.keymap.set('n', '<C-l>', '<cmd>lprev<CR>zz', { desc = 'Previous in location list' })
 
 -- Resize with arrows
--- vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Resize Horizontal Split Down' })
--- vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Resize Horizontal Split Up' })
+vim.keymap.set('n', '<C-S-Down>', ':resize +2<CR>', { desc = 'Resize Horizontal Split Down' })
+vim.keymap.set('n', '<C-S-Up>', ':resize -2<CR>', { desc = 'Resize Horizontal Split Up' })
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { desc = 'Resize Vertical Split Down' })
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { desc = 'Resize Vertical Split Up' })
 
