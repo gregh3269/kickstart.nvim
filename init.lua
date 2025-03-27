@@ -902,6 +902,7 @@ require('lazy').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        -- See comments
         on_colors = function(colors)
           colors.comment = '#cccccc'
         end,
