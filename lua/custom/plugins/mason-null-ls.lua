@@ -1,3 +1,4 @@
+--[[
 return {
   'jay-babu/mason-null-ls.nvim',
   enabled = true,
@@ -15,3 +16,7 @@ return {
     }
   end,
 }
+--]]
+
+-- Disabled due to bug
+return {}

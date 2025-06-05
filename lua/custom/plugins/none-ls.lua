@@ -1,3 +1,4 @@
+--[[
 return {
   'nvimtools/none-ls.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -48,3 +49,7 @@ return {
     }
   end,
 }
+--]]
+
+-- Disabled due to bug
+return {}
