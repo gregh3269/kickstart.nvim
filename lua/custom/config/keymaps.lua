@@ -1,12 +1,12 @@
 -- Additional group headings
-local wk = require 'which-key'
-wk.add {
-  { '<leader>p', group = '[P]roject' },
-  --  { '<leader>pw', group = 'Search Cursor <cword>' },
-  --  { '<leader>pW', group = 'Search Cursor <cWORD>' },
-  { '<leader>pF', group = 'Fugitive' },
-  { '<leader>F', group = ':Git Commands' },
-}
+--local wk = require 'which-key'
+--wk.add {
+--  { '<leader>p', group = '[P]roject' },
+--  { '<leader>pw', group = 'Search Cursor <cword>' },
+--  { '<leader>pW', group = 'Search Cursor <cWORD>' },
+--  { '<leader>pF', group = 'Fugitive' },
+--  { '<leader>F', group = ':Git Commands' },
+--}
 
 local builtin = require 'telescope.builtin'
 
