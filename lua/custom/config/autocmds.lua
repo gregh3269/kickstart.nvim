@@ -16,3 +16,11 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'q', '<cmd>bd<cr>', { silent = true, buffer = true })
   end,
 })
+
+-- Save without formatting
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'lua' },
+  callback = function()
+	vim.keymap.set('n', '<leader>wf', ':noautocmd w<CR>', { desc = 'Save without formatting' })
+  end,
+})
