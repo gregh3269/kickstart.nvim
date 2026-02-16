@@ -1,12 +1,12 @@
 -- Additional group headings
---local wk = require 'which-key'
---wk.add {
---  { '<leader>p', group = '[P]roject' },
---  { '<leader>pw', group = 'Search Cursor <cword>' },
---  { '<leader>pW', group = 'Search Cursor <cWORD>' },
---  { '<leader>pF', group = 'Fugitive' },
---  { '<leader>F', group = ':Git Commands' },
---}
+local wk = require 'which-key'
+wk.add {
+  { '<leader>p', group = '[P]roject' },
+  { '<leader>pw', group = 'Search Cursor <cword>' },
+  { '<leader>pW', group = 'Search Cursor <cWORD>' },
+  { '<leader>pF', group = 'Fugitive' },
+  { '<leader>F', group = ':Git Commands' },
+}
 
 local builtin = require 'telescope.builtin'
 
@@ -14,9 +14,7 @@ local builtin = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = 'Search Git Files' })
 
 -- Search files by input
-vim.keymap.set('n', '<leader>pi', function()
-  builtin.grep_string { search = vim.fn.input 'Grep > ' }
-end, { desc = 'Search Input' })
+vim.keymap.set('n', '<leader>pi', function() builtin.grep_string { search = vim.fn.input 'Grep > ' } end, { desc = 'Search Input' })
 
 -- Project Word Search from cursor > a sequence of letters, digits and underscores, or a
 -- sequence of other non-blank characters, separated with white space
