@@ -32,6 +32,14 @@ return {
       extensions = {
         undo = {
           -- telescope-undo.nvim config, see below
+          side_by_side = true,
+          layout_strategy = 'horizontal',
+          layout_config = {
+            width = { padding = 0 },
+            -- use below to crash plugin fo style info
+            -- preview_height = 0.8,
+            preview_width = 0.7,
+          },
         },
         -- no other extensions here, they can have their own spec too
       },
