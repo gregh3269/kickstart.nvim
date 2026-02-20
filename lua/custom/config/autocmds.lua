@@ -3,24 +3,24 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
     local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
+    if mark[1] > 0 and mark[1] <= lcount then pcall(vim.api.nvim_win_set_cursor, 0, mark) end
   end,
 })
 
 -- Close windows <C-q> quick fix by pressing q otherwise :cclose
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'qf' },
-  callback = function()
-    vim.keymap.set('n', 'q', '<cmd>bd<cr>', { silent = true, buffer = true })
-  end,
+  callback = function() vim.keymap.set('n', 'q', '<cmd>bd<cr>', { silent = true, buffer = true }) end,
 })
 
 -- Save without formatting
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'lua' },
-  callback = function()
-	vim.keymap.set('n', '<leader>wf', ':noautocmd w<CR>', { desc = 'Save without formatting' })
-  end,
+  callback = function() vim.keymap.set('n', '<leader>wf', ':noautocmd w<CR>', { desc = 'Save without formatting' }) end,
+})
+
+-- Telescope wrap preview pane
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TelescopePreviewerLoaded',
+  callback = function() vim.wo.wrap = true end,
 })
