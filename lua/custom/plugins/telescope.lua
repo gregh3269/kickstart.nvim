@@ -5,10 +5,14 @@ return {
     defaults = {
       wrap_results = true,
       layout_strategy = 'horizontal',
-      -- more space
       layout_config = {
-        width = { padding = 0 },
-        preview_width = 0.65,
+        -- more space
+        horizontal = {
+          -- prompt_position = "top",
+          width = { padding = 0 },
+          height = { padding = 0 },
+          preview_width = 0.65,
+        },
       },
     },
   },
