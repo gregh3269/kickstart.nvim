@@ -25,6 +25,7 @@ return {
     harpoon:extend(extensions.builtins.highlight_current_file())
 
     -- Add keymaps for harpoon window
+    -- stylua: ignore
     harpoon:extend {
       UI_CREATE = function(cx)
         vim.keymap.set('n', '<C-v>', function()
@@ -63,6 +64,7 @@ return {
         :find()
     end
 
+    -- stylua: ignore
     local keys = {
 
       -- Harpoon marked files 1 through 4

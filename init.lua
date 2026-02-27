@@ -805,6 +805,19 @@ require('lazy').setup({
         },
         -- See comments
         on_colors = function(colors) colors.comment = '#cccccc' end,
+        on_highlights = function(hl, colors)
+          local util = require 'tokyonight.util'
+          --hl.CursorLine = { bg = '#001122' }
+          --hl.IblIndent = { fg = '#002233' }
+          --hl.IblScope = { fg = '#002255' }
+          hl.LspReferenceRead = { bg = '#3383e8' }
+          hl.LspReferenceWrite = { bg = '#3383e8' }
+          hl.LspReferenceText = { bg = '#3383e8' }
+          --hl.MatchParen = { fg = '#000000', bg = '#bbbb44' }
+          hl['@variable'] = { fg = util.lighten(hl['@variable'].fg, 0.7) }
+          --hl['@variable.parameter'] = { fg = util.lighten(hl['@variable.parameter'].fg, 0.7) }
+          --hl['@variable.member'] = { fg = util.lighten(hl['@variable.member'].fg, 0.7) }
+        end,
       }
 
       -- Load the colorscheme here.
