@@ -1,13 +1,44 @@
 
+Review code
+
+## set your difftool once:
+git config --global diff.tool meld
+
+
+git checkout develop
+
+## to see differences, no edits saved
+git difftool -d master develop
+
+
+Make develop branch changes permanent
+
+git difftool -d master 
+
+Now edit the right window. Save window and these changes are permanent.
+
+Review conflicts
+
+git mergetool
+
+###################################
+
 Needs tree-sitter now. Down load and create ln -s xxx /usr/local/bin/tree-sitter
 https://github.com/tree-sitter/tree-sitter/releases
+
+###################################
 
 Before and after changes
 
 vim.g.have_nerd_font = false 
 vim.g.have_nerd_font = true
 
-'folke/tokyonight.nvim',
+{ -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -22,7 +53,13 @@ vim.g.have_nerd_font = true
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
-'folke/tokyonight.nvim',
+  },
+{ -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'folke/tokyonight.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -31,8 +68,20 @@ vim.g.have_nerd_font = true
           comments = { italic = false }, -- Disable italics in comments
         },
         -- See comments
-        on_colors = function(colors)
-          colors.comment = '#cccccc'
+        on_colors = function(colors) colors.comment = '#cccccc' end,
+        -- Highlight better LSP varibles
+        on_highlights = function(hl, colors)
+          local util = require 'tokyonight.util'
+          --hl.CursorLine = { bg = '#001122' }
+          --hl.IblIndent = { fg = '#002233' }
+          --hl.IblScope = { fg = '#002255' }
+          hl.LspReferenceRead = { bg = '#3383e8' }
+          hl.LspReferenceWrite = { bg = '#3383e8' }
+          hl.LspReferenceText = { bg = '#3383e8' }
+          --hl.MatchParen = { fg = '#000000', bg = '#bbbb44' }
+          hl['@variable'] = { fg = util.lighten(hl['@variable'].fg, 0.7) }
+          --hl['@variable.parameter'] = { fg = util.lighten(hl['@variable.parameter'].fg, 0.7) }
+          --hl['@variable.member'] = { fg = util.lighten(hl['@variable.member'].fg, 0.7) }
         end,
       }
 
@@ -41,6 +90,7 @@ vim.g.have_nerd_font = true
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
     end,
+  },
 
 -- require 'kickstart.plugins.neo-tree',
 require 'kickstart.plugins.neo-tree',
