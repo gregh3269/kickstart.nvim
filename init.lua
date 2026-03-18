@@ -397,6 +397,42 @@ require('lazy').setup({
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
+        defaults = {
+          wrap_results = true,
+          layout_strategy = 'horizontal',
+          layout_config = {
+            -- more space
+            horizontal = {
+              -- prompt_position = "top",
+              width = { padding = 0 },
+              height = { padding = 0 },
+              preview_width = 0.65,
+            },
+          },
+          mappings = {
+            i = {
+              -- Search history grep
+              ['<S-Down>'] = function(...) require('telescope.actions').cycle_history_next(...) end,
+              ['<S-Up>'] = function(...) require('telescope.actions').cycle_history_prev(...) end,
+            },
+          },
+          cache_picker = {
+            num_pickers = 20, -- -1 = Cache unlimited pickers
+            limit_entries = 100, -- Limit entries per picker (for memory)
+            -- ignore_empty_prompt = true, -- Don't cache if prompt is empty
+          },
+        },
+        pickers = {
+          -- For the previous search picker show lager results no wrapping here
+          pickers = {
+            layout_config = {
+              -- more space
+              horizontal = {
+                preview_width = 0.50,
+              },
+            },
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -416,6 +452,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sc', builtin.commands, { desc = '[S]earch [C]ommands' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- Search history
+      vim.keymap.set('n', '<leader>sp', builtin.pickers, { desc = '[S]earch [P]ickers (previous)' })
 
       -- This runs on LSP attach per buffer (see main LSP attach function in 'neovim/nvim-lspconfig' config for more info,
       -- it is better explained there). This allows easily switching between pickers if you prefer using something else!
