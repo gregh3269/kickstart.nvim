@@ -31,11 +31,81 @@ https://github.com/tree-sitter/tree-sitter/releases
 Before and after changes
 
 vim.g.have_nerd_font = false 
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = true -- 3269
+
+-- [[ Configure Telescope ]]
+-- See `:help telescope` and `:help telescope.setup()`
+require('telescope').setup {
+  -- You can put your default mappings / updates / etc. in here
+  --  All the info you're looking for is in `:help telescope.setup()`
+  --
+  -- defaults = {
+  --   mappings = {
+  --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+  --   },
+  -- },
+  -- pickers = {}
+  extensions = {
+    ['ui-select'] = { require('telescope.themes').get_dropdown() },
+  },
+}
+-- [[ Configure Telescope ]]
+-- See `:help telescope` and `:help telescope.setup()`
+require('telescope').setup {
+  -- You can put your default mappings / updates / etc. in here
+  --  All the info you're looking for is in `:help telescope.setup()`
+  --
+  -- defaults = {
+  --   mappings = {
+  --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+  --   },
+  -- },
+  -- pickers = {}
+  extensions = {
+    ['ui-select'] = { require('telescope.themes').get_dropdown() },
+  },
+  -- 3269 Some defaults
+  defaults = {
+    wrap_results = true,
+    layout_strategy = 'horizontal',
+    layout_config = {
+      -- more space
+      horizontal = {
+        -- prompt_position = "top",
+        width = { padding = 0 },
+        height = { padding = 0 },
+        preview_width = 0.65,
+      },
+    },
+    mappings = {
+      i = {
+        -- Search history grep
+        ['<S-Down>'] = function(...) require('telescope.actions').cycle_history_next(...) end,
+        ['<S-Up>'] = function(...) require('telescope.actions').cycle_history_prev(...) end,
+      },
+    },
+    cache_picker = {
+      num_pickers = 20, -- -1 = Cache unlimited pickers
+      limit_entries = 100, -- Limit entries per picker (for memory)
+      -- ignore_empty_prompt = true, -- Don't cache if prompt is empty
+    },
+  },
+  pickers = {
+    -- For the previous search picker show lager results no wrapping here
+    pickers = {
+      layout_config = {
+        -- more space
+        horizontal = {
+          preview_width = 0.50,
+        },
+      },
+    },
+  },
+}
 
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
--- Search history
+-- 3269 Search history
 vim.keymap.set('n', '<leader>sp', builtin.pickers, { desc = '[S]earch [P]ickers (previous)' })
 
 { -- You can easily change to a different colorscheme.
@@ -72,7 +142,7 @@ vim.keymap.set('n', '<leader>sp', builtin.pickers, { desc = '[S]earch [P]ickers 
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
-        -- See comments
+        -- 3269 See comments
         on_colors = function(colors) colors.comment = '#cccccc' end,
         -- Highlight better LSP varibles
         on_highlights = function(hl, colors)
@@ -98,7 +168,7 @@ vim.keymap.set('n', '<leader>sp', builtin.pickers, { desc = '[S]earch [P]ickers 
   },
 
 -- require 'kickstart.plugins.neo-tree',
-require 'kickstart.plugins.neo-tree',
+require 'kickstart.plugins.neo-tree', -- 3269
 
 -- { import = 'custom.plugins' },
-{ import = 'custom.plugins' },
+{ import = 'custom.plugins' }, -- 3269
