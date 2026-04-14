@@ -28,4 +28,6 @@ vim.o.shiftround = true
 require 'custom.config.autocmds'
 require 'custom.config.keymaps'
 
+---@module 'lazy'
+---@type LazySpec
 return {}
