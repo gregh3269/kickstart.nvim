@@ -1,8 +1,8 @@
 diff --git a/lua/telescope/builtin/__internal.lua b/lua/telescope/builtin/__internal.lua
-index 1f12f09..d4ffff9 100644
+index 67787b0..66145fe 100644
 --- a/lua/telescope/builtin/__internal.lua
 +++ b/lua/telescope/builtin/__internal.lua
-@@ -224,6 +224,8 @@ internal.pickers = function(opts)
+@@ -227,6 +227,8 @@ internal.pickers = function(opts)
            opts.cache_picker = opts._cache_picker
            opts["cache_index"] = selection_index
            opts["initial_mode"] = cached_pickers[selection_index].initial_mode
