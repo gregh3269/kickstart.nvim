@@ -33,6 +33,11 @@ Before and after changes
 vim.g.have_nerd_font = false 
 vim.g.have_nerd_font = true
 
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+-- Search history
+vim.keymap.set('n', '<leader>sp', builtin.pickers, { desc = '[S]earch [P]ickers (previous)' })
+
 { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
